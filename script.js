@@ -62,3 +62,4 @@ document.querySelector('.again').addEventListener('click', function () {
   number.style.width = '15rem';
   displayMessage('Start guessing...');
 });
+// uploaded again

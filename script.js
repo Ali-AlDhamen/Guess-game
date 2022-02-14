@@ -53,7 +53,7 @@ check.addEventListener('click', function () {
 });
 document.querySelector('.again').addEventListener('click', function () {
   score = 5;
-
+  Thehhead.textContent = 'Guess My Number!';
   secretN = Math.trunc(Math.random() * 100) + 1;
   guess1.value = '';
   number.textContent = '?';

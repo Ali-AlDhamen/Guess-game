@@ -1,32 +1,40 @@
 'use strict';
+const Thehhead = document.querySelector('.heado');
+const number = document.querySelector('.number');
+const guess1 = document.querySelector('.guess');
+const score1 = document.querySelector('.score');
+const highscore1 = document.querySelector('.highscore');
+const message1 = document.querySelector('.message');
+const check = document.querySelector('.check');
+const body = document.querySelector('body');
 
 // document.querySelector('.number').textContent = secretN; for testing
 
-let secretN = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
+let secretN = Math.trunc(Math.random() * 100) + 1;
+let score = 5;
 let highscore = 0;
 
 const displayMessage = function (message) {
-  document.querySelector('.message').textContent = message;
+  message1.textContent = message;
 };
 const displayScore = function (score) {
-  document.querySelector('.score').textContent = score;
+  score1.textContent = score;
 };
 
-document.querySelector('.check').addEventListener('click', function () {
-  const guess = Number(document.querySelector('.guess').value);
+check.addEventListener('click', function () {
+  const guess = Number(guess1.value);
 
   if (!guess) {
     displayMessage('NO NUMBER!');
   } else if (guess === secretN) {
-    document.querySelector('.number').textContent = secretN;
+    number.textContent = secretN;
     displayMessage('CORRECT NUMBER!');
-    document.querySelector('body').style.backgroundColor = '#60b347';
-    document.querySelector('.number').style.width = '30rem';
+    body.style.backgroundColor = '#60b347';
+    number.style.width = '30rem';
     if (score > highscore) {
       highscore = score;
     }
-    document.querySelector('.highscore').textContent = highscore;
+    highscore1.textContent = highscore;
   }
   // doing one if statment for both low and high to remove dup
   else if (guess !== secretN) {
@@ -35,22 +43,22 @@ document.querySelector('.check').addEventListener('click', function () {
       score--;
       displayScore(score);
     } else {
-      document.querySelector('.heado').textContent = 'THE NUMBER WAS';
-      document.querySelector('.number').textContent = secretN;
-      document.querySelector('body').style.backgroundColor = 'red';
+      Thehhead.textContent = 'THE NUMBER WAS';
+      number.textContent = secretN;
+      body.style.backgroundColor = 'red';
       displayMessage('YOU LOST!');
       displayScore(0);
     }
   }
 });
 document.querySelector('.again').addEventListener('click', function () {
-  score = 20;
+  score = 5;
 
-  secretN = Math.trunc(Math.random() * 20) + 1;
-  document.querySelector('.guess').value = '';
-  document.querySelector('.number').textContent = '?';
+  secretN = Math.trunc(Math.random() * 100) + 1;
+  guess1.value = '';
+  number.textContent = '?';
   displayScore(score);
-  document.querySelector('body').style.backgroundColor = '#222';
-  document.querySelector('.number').style.width = '15rem';
+  body.style.backgroundColor = '#222';
+  number.style.width = '15rem';
   displayMessage('Start guessing...');
 });
